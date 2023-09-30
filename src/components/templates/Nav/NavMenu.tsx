@@ -13,7 +13,7 @@ const NavMenu = ({ isMobileOverlayOpen, onHamburgerClick }: NavMenuProps) => {
       {/* MOBILE HAMBURGER */}
       <div className="flex lg:hidden flex-1 relative">
         <button
-          className="lg:hidden focus:outline-none p-4 py-6"
+          className="lg:hidden focus:outline-none p-4 py-5"
           onClick={onHamburgerClick}
         >
           <HamburgerIcon isActive={isMobileOverlayOpen} />

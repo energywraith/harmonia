@@ -17,7 +17,7 @@ const InputField = ({
   variant = "primary",
   ...props
 }: InputFieldProps) => {
-  const { textColor, bgColor } = variants[variant];
+  const { textColor, bgColor, placeholderColor } = variants[variant];
 
   return (
     <label
@@ -32,7 +32,7 @@ const InputField = ({
         {...inputProps}
         name={name}
         placeholder={placeholder}
-        className={`w-full rounded-3xl text-xl font-passion px-6 py-1 pr-12 ${bgColor} ${textColor} placeholder:${textColor} ${
+        className={`w-full rounded-3xl text-xl font-passion px-6 py-1 pr-12 ${bgColor} ${textColor} ${placeholderColor} ${
           inputProps?.className || ""
         }`}
       />

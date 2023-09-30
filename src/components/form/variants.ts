@@ -1,10 +1,12 @@
 export const variants = {
   primary: {
     textColor: "text-secondary-900",
+    placeholderColor: "placeholder:text-secondary-900",
     bgColor: "bg-primary-900",
   },
   secondary: {
     textColor: "text-primary-900",
+    placeholderColor: "placeholder:text-primary-900",
     bgColor: "bg-secondary-900",
   },
 };

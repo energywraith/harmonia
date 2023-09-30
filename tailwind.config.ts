@@ -8,8 +8,9 @@ const config: Config = {
   ],
   theme: {
     fontFamily: {
-      passion: "var(--passion-font)",
       poppins: "var(--poppins-font)",
+      passion: "var(--passion-font)",
+      lobster: "var(--lobster-font)",
     },
     extend: {
       colors: {

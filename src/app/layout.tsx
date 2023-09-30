@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Poppins, Passion_One, Lobster } from "next/font/google";
+import { Nav } from "@/components/templates/Nav";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${passionOne.variable} ${lobster.variable} bg-primary-900 text-secondary-900 font-poppins`}
       >
+        <Nav />
         {children}
       </body>
     </html>

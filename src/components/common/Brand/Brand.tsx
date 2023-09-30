@@ -2,7 +2,13 @@ import { SVGProps } from "react";
 
 const Brand = (props: SVGProps<SVGSVGElement>) => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={192} height={53} {...props}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={192}
+      height={53}
+      {...props}
+      className={`pointer-events-none select-none ${props.className || ""}`}
+    >
       <text
         fill="currentColor"
         className="font-lobster text-5xl tracking-normal"

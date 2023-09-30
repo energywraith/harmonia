@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Poppins, Passion_One } from "next/font/google";
+import { Poppins, Passion_One, Lobster } from "next/font/google";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -12,6 +12,12 @@ const passionOne = Passion_One({
   subsets: ["latin"],
   weight: ["400"],
   variable: "--passion-font",
+});
+
+const lobster = Lobster({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--lobster-font",
 });
 
 export const metadata: Metadata = {
@@ -27,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} ${passionOne.variable} bg-primary-900 font-poppins`}
+        className={`${poppins.variable} ${passionOne.variable} ${lobster.variable} bg-primary-900 text-secondary-900 font-poppins`}
       >
         {children}
       </body>

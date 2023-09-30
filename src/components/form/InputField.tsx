@@ -1,10 +1,12 @@
 import { ComponentType, HTMLProps, InputHTMLAttributes, SVGProps } from "react";
+import { variants, Variant } from "./variants";
 
 interface InputFieldProps extends HTMLProps<HTMLLabelElement> {
-  name: string;
+  name?: string;
   placeholder?: string;
   Icon?: ComponentType<SVGProps<SVGSVGElement>>;
   inputProps?: InputHTMLAttributes<HTMLInputElement>;
+  variant?: Variant;
 }
 
 const InputField = ({
@@ -12,13 +14,16 @@ const InputField = ({
   placeholder,
   Icon,
   inputProps,
+  variant = "primary",
   ...props
 }: InputFieldProps) => {
+  const { textColor, bgColor } = variants[variant];
+
   return (
     <label
       {...props}
       htmlFor={name}
-      className={`relative text-primary-900 ${props.className}`}
+      className={`relative h-9 ${textColor} ${props.className || ""}`}
     >
       {Icon && (
         <Icon className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 right-5" />
@@ -27,10 +32,14 @@ const InputField = ({
         {...inputProps}
         name={name}
         placeholder={placeholder}
-        className={`bg-secondary-900 rounded-3xl text-xl font-passion text-primary-900 placeholder:text-primary-900 px-6 py-1 pr-12 ${inputProps?.className}`}
+        className={`w-full rounded-3xl text-xl font-passion px-6 py-1 pr-12 ${bgColor} ${textColor} placeholder:${textColor} ${
+          inputProps?.className || ""
+        }`}
       />
     </label>
   );
 };
 
 export { InputField };
+
+export type { InputFieldProps };

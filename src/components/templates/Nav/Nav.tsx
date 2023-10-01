@@ -39,7 +39,7 @@ const Nav = () => {
 
   return (
     <>
-      <header className="bg-primary-900 relative z-20">
+      <header className="bg-primary-900 relative z-30">
         <div className="flex items-center max-w-screen-2xl mx-auto">
           <NavMenu
             isMobileOverlayOpen={isMenuOpen || isSearchOpen}

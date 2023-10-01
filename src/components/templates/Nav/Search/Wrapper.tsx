@@ -22,7 +22,7 @@ const DesktopWrapper = ({ children, innerRef, onBlur }: WrapperProps) => {
   });
 
   return (
-    <div className="absolute hidden lg:flex top-[105%] left-0 bg-secondary-900 rounded-b-3xl h-60 text-primary-900 text-center items-center">
+    <div className="absolute hidden lg:flex top-[105%] left-0 bg-secondary-900 rounded-b-3xl h-60 text-primary-900 text-center items-center shadow-sm shadow-black/50">
       {children}
     </div>
   );

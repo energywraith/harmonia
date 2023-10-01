@@ -102,4 +102,4 @@ export default async function Home() {
   );
 }
 
-export const revalidate = 3600; // revalidate at most every hour
+export const revalidate = 24 * 3600; // revalidate every day

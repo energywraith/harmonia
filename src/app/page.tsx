@@ -83,10 +83,34 @@ export default async function Home() {
         <h2 className="text-base lg:text-xl text-shadow-sm ">
           Discover new tunes
         </h2>
-        <h3 className="text-3xl lg:text-5xl font-passion">
+        <h3 className="text-3xl lg:text-5xl font-passion mb-8">
           {"Today's Selections"}
         </h3>
-        <Carousel className="mt-8 lg:max-w-screen-lg">
+        <Carousel
+          className="lg:max-w-screen-lg"
+          pagination={{
+            clickable: true,
+            dynamicBullets: true,
+          }}
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+              centeredSlides: true,
+            },
+            768: {
+              slidesPerView: 2,
+              centeredSlides: true,
+            },
+            1024: {
+              slidesPerView: 3,
+              centeredSlides: false,
+            },
+          }}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: true,
+          }}
+        >
           {songs.map((song) => (
             <Card
               key={song.id}
@@ -94,6 +118,35 @@ export default async function Home() {
               subtitle={song.primary_artist.name}
               image={song.header_image_url}
               className="select-none w-fit mx-auto mb-10"
+            />
+          ))}
+        </Carousel>
+      </Container>
+      <Container outerClassName="overflow-hidden">
+        <h2 className="text-3xl lg:text-5xl font-passion pb-8 pt-12 px-4 lg:px-0">
+          Get back to those songs!
+        </h2>
+        <Carousel
+          className="mx-0 max-w-none"
+          slidesPerView="auto"
+          spaceBetween={20}
+          breakpoints={{
+            0: {
+              spaceBetween: 0,
+            },
+            1024: {
+              spaceBetween: 40,
+            },
+          }}
+        >
+          {[...songs, ...songs].map((song) => (
+            <Card
+              key={song.id}
+              title={song.title}
+              subtitle={song.primary_artist.name}
+              image={song.header_image_url}
+              className="select-none w-fit mb-10 mx-4 lg:mx-0"
+              narrow
             />
           ))}
         </Carousel>

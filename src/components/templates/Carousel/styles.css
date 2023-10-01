@@ -2,3 +2,15 @@
   --swiper-pagination-color: #734B5E;
   --swiper-pagination-bullet-size: 16px;
 }
+
+.swiper, .swiper-wrapper {
+  overflow: visible;
+}
+
+.swiper-horizontal {
+  margin: 0;
+}
+
+.swiper-slide {
+  width: auto;
+}

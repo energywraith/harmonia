@@ -37,7 +37,7 @@ export default function RootLayout({
         className={`${poppins.variable} ${passionOne.variable} ${lobster.variable} bg-primary-900 text-secondary-900 font-poppins`}
       >
         <Nav />
-        {children}
+        <main className="pt-16">{children}</main>
       </body>
     </html>
   );

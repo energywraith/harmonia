@@ -39,8 +39,8 @@ const Nav = () => {
 
   return (
     <>
-      <header className="bg-primary-900 relative z-30">
-        <div className="flex items-center max-w-screen-2xl mx-auto">
+      <header className="fixed bg-primary-900 z-30 w-full top-0 left-0">
+        <div className="flex items-center max-w-screen-xl mx-auto">
           <NavMenu
             isMobileOverlayOpen={isMenuOpen || isSearchOpen}
             onHamburgerClick={onHamburgerClick}

@@ -1,8 +1,9 @@
-import { FormEvent } from "react";
+import { FormEvent, useEffect } from "react";
 import { ClefIcon } from "@/components/icons/ClefIcon";
 import { NavLink } from "./NavLink";
 import { routes } from "./routes";
 import { Search } from "./Search";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 interface MobileOverlay {
   isMenuOpen: boolean;
@@ -18,9 +19,27 @@ const MobileOverlay = ({
   isSearchOpen,
   searchInputProps,
 }: MobileOverlay) => {
+  const { isBelowLg } = useBreakpoint("lg");
+
+  // Disables body scrolling while MobileOverlay is open
+  useEffect(() => {
+    if (!isBelowLg()) return;
+
+    if (isMenuOpen || isSearchOpen) {
+      document.body.classList.add("overflow-hidden");
+      return;
+    }
+
+    document.body.classList.remove("overflow-hidden");
+
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [isMenuOpen, isSearchOpen]);
+
   return (
     <div
-      className={`absolute flex lg:hidden top-0 left-0 w-full z-20 inset-0 pt-16 bg-secondary-900 text-primary-900 transition-all duration-300 ${
+      className={`fixed flex lg:hidden top-0 left-0 w-full z-20 inset-0 pt-16 bg-secondary-900 text-primary-900 transition-all duration-300 ${
         isMenuOpen || isSearchOpen
           ? "opacity-100 pointer-events-auto"
           : "opacity-0 pointer-events-none"

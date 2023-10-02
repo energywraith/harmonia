@@ -29,6 +29,7 @@ const ResultsItem = ({
             alt={`${title} thumbnail`}
             fill
             className="object-cover"
+            sizes="100%"
           />
         </div>
         <div className="flex flex-col justify-center">

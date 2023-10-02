@@ -33,6 +33,7 @@ const Card = ({ id, title, subtitle, image, narrow, className }: CardProps) => {
                 alt={`${title}-cover`}
                 className={"select-none pointer-events-none"}
                 fill
+                sizes="100%"
               />
             </div>
             <h4

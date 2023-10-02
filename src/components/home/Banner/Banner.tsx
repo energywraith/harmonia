@@ -21,6 +21,7 @@ const Banner = () => (
         alt="Harmonia AI generated image"
         fill={true}
         className="object-cover lg:rounded-3xl"
+        sizes="100%"
       />
     </div>
   </Container>

@@ -6,9 +6,8 @@ import { Brand } from "@/components/common";
 import { SearchIcon } from "@/components/icons";
 import { NavMenu } from "./NavMenu";
 import { MobileOverlay } from "./MobileOverlay";
-import { Search } from "./Search";
+import { ResultsProps, Search } from "./Search";
 import { useDebounce } from "@/hooks";
-import { SearchResultsProps } from "./Search/SearchResults";
 
 const searchResultsInitialState = {
   songs: [],
@@ -23,7 +22,7 @@ const Nav = () => {
   const [searchKey, setSearchKey] = useState("");
   const debouncedSearchKey = useDebounce<string>(searchKey, 500);
 
-  const [searchResults, setSearchResults] = useState<SearchResultsProps>(
+  const [searchResults, setSearchResults] = useState<ResultsProps>(
     searchResultsInitialState
   );
 

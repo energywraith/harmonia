@@ -4,6 +4,7 @@ import { ClefIcon } from "@/components/icons";
 import { NavLink } from "./NavLink";
 import { routes } from "./routes";
 import { Search } from "./Search";
+import { SearchResultsProps } from "./Search/SearchResults";
 
 interface MobileOverlay {
   isMenuOpen: boolean;
@@ -12,12 +13,14 @@ interface MobileOverlay {
     value: string;
     onChange: (e: FormEvent<HTMLInputElement>) => void;
   };
+  searchResults: SearchResultsProps;
 }
 
 const MobileOverlay = ({
   isMenuOpen,
   isSearchOpen,
   searchInputProps,
+  searchResults,
 }: MobileOverlay) => {
   const { isBelowLg } = useBreakpoint("lg");
 
@@ -41,7 +44,7 @@ const MobileOverlay = ({
     <div
       className={`fixed flex lg:hidden top-0 left-0 w-full z-20 inset-0 pt-16 bg-secondary-900 text-primary-900 transition-all duration-300 ${
         isMenuOpen || isSearchOpen
-          ? "opacity-100 pointer-events-auto"
+          ? "opacity-100 pointer-events-auto overflow-y-auto"
           : "opacity-0 pointer-events-none"
       }`}
     >
@@ -70,6 +73,7 @@ const MobileOverlay = ({
       {isSearchOpen && (
         <Search
           isSearchOpen={isSearchOpen}
+          searchResults={searchResults}
           inputProps={searchInputProps}
           className="w-full px-4 py-4"
           isMobile

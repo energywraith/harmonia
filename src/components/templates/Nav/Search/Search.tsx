@@ -1,9 +1,13 @@
+"use client";
+
 import { useRef } from "react";
 import { InputFieldProps } from "@/components/form";
 import { Input } from "./Input";
 import { Wrapper } from "./Wrapper";
+import { Results, ResultsProps } from "./Results";
 
 interface SearchInputProps extends InputFieldProps {
+  searchResults: ResultsProps;
   isSearchOpen: boolean;
   isMobile?: boolean;
   className?: string;
@@ -11,6 +15,7 @@ interface SearchInputProps extends InputFieldProps {
 }
 
 const Search = ({
+  searchResults,
   isSearchOpen,
   isMobile,
   className,
@@ -19,9 +24,15 @@ const Search = ({
 }: SearchInputProps) => {
   const innerRef = useRef<HTMLDivElement>(null);
 
+  const showResultsBox =
+    (searchResults?.songs.length > 0 ||
+      searchResults?.albums.length > 0 ||
+      searchResults?.artists.length > 0) &&
+    isSearchOpen;
+
   return (
     <div className={`relative ${className || ""}`} ref={innerRef}>
-      <Input {...props} isActive={isSearchOpen} />
+      <Input {...props} isActive={showResultsBox} />
       <div
         className={`transition-all duration-300 ${
           isSearchOpen
@@ -29,9 +40,9 @@ const Search = ({
             : "opacity-0 pointer-events-none"
         }`}
       >
-        {isSearchOpen && (
+        {showResultsBox && (
           <Wrapper innerRef={innerRef} onBlur={onBlur} isMobile={isMobile}>
-            There will be results of search for: {props.inputProps?.value}
+            <Results {...searchResults} />
           </Wrapper>
         )}
       </div>

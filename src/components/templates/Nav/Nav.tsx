@@ -1,17 +1,31 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import NextLink from "next/link";
 import { Brand } from "@/components/common";
 import { SearchIcon } from "@/components/icons";
 import { NavMenu } from "./NavMenu";
 import { MobileOverlay } from "./MobileOverlay";
 import { Search } from "./Search";
+import { useDebounce } from "@/hooks";
+import { SearchResultsProps } from "./Search/SearchResults";
+
+const searchResultsInitialState = {
+  songs: [],
+  artists: [],
+  albums: [],
+};
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+
   const [searchKey, setSearchKey] = useState("");
+  const debouncedSearchKey = useDebounce<string>(searchKey, 500);
+
+  const [searchResults, setSearchResults] = useState<SearchResultsProps>(
+    searchResultsInitialState
+  );
 
   const onHamburgerClick = () => {
     if (isSearchOpen) {
@@ -31,6 +45,23 @@ const Nav = () => {
   const onSearchChange = (e: FormEvent<HTMLInputElement>) => {
     setSearchKey(e.currentTarget.value);
   };
+
+  const fetchSearchResults = async () => {
+    const results = await fetch(`/api/search?key=${searchKey}`);
+
+    const data = await results.json();
+
+    setSearchResults(data);
+  };
+
+  useEffect(() => {
+    if (searchKey.length === 0) {
+      setSearchResults(searchResultsInitialState);
+      return;
+    }
+
+    fetchSearchResults();
+  }, [debouncedSearchKey]);
 
   const searchInputProps = {
     value: searchKey,
@@ -55,6 +86,7 @@ const Nav = () => {
               Icon={SearchIcon}
               isSearchOpen={isSearchOpen}
               onBlur={() => setIsSearchOpen(false)}
+              searchResults={searchResults}
               inputProps={{
                 ...searchInputProps,
                 className: "max-w-[10rem] lg:max-w-[16rem]",
@@ -74,6 +106,7 @@ const Nav = () => {
         isMenuOpen={isMenuOpen}
         isSearchOpen={isSearchOpen}
         searchInputProps={searchInputProps}
+        searchResults={searchResults}
       />
     </>
   );

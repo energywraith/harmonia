@@ -28,6 +28,7 @@ const DiscoverTunes = ({ songs }: DiscoverTunesProps) => {
         {songs.map((song) => (
           <Card
             key={song.id}
+            id={song.id}
             title={song.title}
             subtitle={song.primary_artist.name}
             image={song.header_image_url}

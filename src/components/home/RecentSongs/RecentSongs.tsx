@@ -16,6 +16,7 @@ const RecentSongs = ({ songs }: RecentSongsProps) => (
       {songs.map((song) => (
         <Card
           key={song.id}
+          id={song.id}
           title={song.title}
           subtitle={song.primary_artist.name}
           image={song.header_image_url}

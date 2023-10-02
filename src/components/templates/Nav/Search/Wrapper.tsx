@@ -1,6 +1,5 @@
 import { ReactNode, RefObject } from "react";
-import { useBreakpoint } from "@/hooks/useBreakpoint";
-import { useOutsideClickListener } from "@/hooks/useOutsideClickListener";
+import { useBreakpoint, useOutsideClickListener } from "@/hooks";
 
 interface WrapperProps {
   children: ReactNode;

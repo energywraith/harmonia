@@ -1,9 +1,9 @@
 import { FormEvent, useEffect } from "react";
-import { ClefIcon } from "@/components/icons/ClefIcon";
+import { useBreakpoint } from "@/hooks";
+import { ClefIcon } from "@/components/icons";
 import { NavLink } from "./NavLink";
 import { routes } from "./routes";
 import { Search } from "./Search";
-import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 interface MobileOverlay {
   isMenuOpen: boolean;

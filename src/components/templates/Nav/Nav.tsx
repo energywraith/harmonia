@@ -2,8 +2,8 @@
 
 import { FormEvent, useState } from "react";
 import NextLink from "next/link";
-import { Brand } from "@/components/common/Brand";
-import { SearchIcon } from "@/components/icons/SearchIcon";
+import { Brand } from "@/components/common";
+import { SearchIcon } from "@/components/icons";
 import { NavMenu } from "./NavMenu";
 import { MobileOverlay } from "./MobileOverlay";
 import { Search } from "./Search";

@@ -1,4 +1,4 @@
-import { HamburgerIcon } from "@/components/icons/HamburgerIcon";
+import { HamburgerIcon } from "@/components/icons";
 import { NavLink } from "./NavLink";
 import { routes } from "./routes";
 

@@ -11,7 +11,9 @@ interface CardProps {
 const Card = ({ title, subtitle, image, narrow, className }: CardProps) => {
   return (
     <div
-      className={`group rounded-lg shadow shadow-black w-64 ${className || ""}`}
+      className={`group rounded-lg shadow shadow-black/25 w-64 ${
+        className || ""
+      }`}
       style={{
         backgroundImage: `url(${image})`,
       }}

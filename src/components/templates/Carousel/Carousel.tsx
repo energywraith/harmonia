@@ -1,6 +1,6 @@
 "use client";
 
-import { Children, ReactNode, isValidElement } from "react";
+import { Children, isValidElement } from "react";
 import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 
@@ -8,10 +8,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "./styles.css";
 
-interface CarouselProps extends SwiperProps {}
-
-const Carousel = ({ className, children, ...props }: CarouselProps) => {
-  const mapped = Children.map(children, (child) => {
+const Carousel = ({ className, children, ...props }: SwiperProps) => {
+  const childrenAsSlides = Children.map(children, (child) => {
     if (isValidElement(child)) {
       return <SwiperSlide className="w-auto">{child}</SwiperSlide>;
     }
@@ -24,7 +22,7 @@ const Carousel = ({ className, children, ...props }: CarouselProps) => {
       className={`w-full ${className || ""}`}
       {...props}
     >
-      {mapped}
+      {childrenAsSlides}
     </Swiper>
   );
 };

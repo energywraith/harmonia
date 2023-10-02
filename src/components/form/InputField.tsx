@@ -4,7 +4,9 @@ import { variants, Variant } from "./variants";
 interface InputFieldProps extends HTMLProps<HTMLLabelElement> {
   name?: string;
   placeholder?: string;
-  Icon?: ComponentType<SVGProps<SVGSVGElement>>;
+  Icon?:
+    | ComponentType<SVGProps<SVGSVGElement>>
+    | React.FC<{ className: string }>;
   inputProps?: InputHTMLAttributes<HTMLInputElement>;
   variant?: Variant;
 }

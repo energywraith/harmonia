@@ -36,7 +36,7 @@ const ResultsItem = ({
             {title}
           </h5>
           {subtitle && (
-            <h6 className="text-sm leading-none lg:truncate lg:max-w-[9rem]">
+            <h6 className="text-sm leading-none mt-1 lg:truncate lg:max-w-[9rem]">
               {subtitle}
             </h6>
           )}

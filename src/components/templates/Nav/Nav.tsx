@@ -2,7 +2,7 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import NextLink from "next/link";
-import { Brand } from "@/components/common";
+import { Brand, Loader } from "@/components/common";
 import { SearchIcon } from "@/components/icons";
 import { NavMenu } from "./NavMenu";
 import { MobileOverlay } from "./MobileOverlay";
@@ -18,6 +18,7 @@ const searchResultsInitialState = {
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [searchKey, setSearchKey] = useState("");
   const debouncedSearchKey = useDebounce<string>(searchKey, 500);
@@ -46,15 +47,20 @@ const Nav = () => {
   };
 
   const fetchSearchResults = async () => {
+    setIsLoading(true);
+
     const results = await fetch(`/api/search?key=${searchKey}`);
 
     const data = await results.json();
 
+    setIsLoading(false);
+    setIsSearchOpen(true);
     setSearchResults(data);
   };
 
   useEffect(() => {
     if (searchKey.length === 0) {
+      setIsLoading(false);
       setSearchResults(searchResultsInitialState);
       return;
     }
@@ -82,7 +88,7 @@ const Nav = () => {
             <Search
               className="hidden lg:flex ml-auto mr-4"
               variant="secondary"
-              Icon={SearchIcon}
+              Icon={isLoading ? Loader : SearchIcon}
               isSearchOpen={isSearchOpen}
               onBlur={() => setIsSearchOpen(false)}
               searchResults={searchResults}

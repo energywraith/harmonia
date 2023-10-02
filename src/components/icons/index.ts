@@ -4,3 +4,4 @@ export * from "./MusicNoteIcon";
 export * from "./SearchIcon";
 export * from "./FigmaIcon";
 export * from "./GithubIcon";
+export * from "./LoadingIcon";

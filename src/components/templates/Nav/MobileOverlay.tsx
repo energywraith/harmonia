@@ -4,7 +4,7 @@ import { ClefIcon } from "@/components/icons";
 import { NavLink } from "./NavLink";
 import { routes } from "./routes";
 import { Search } from "./Search";
-import { SearchResultsProps } from "./Search/SearchResults";
+import { ResultsProps } from "./Search";
 
 interface MobileOverlay {
   isMenuOpen: boolean;
@@ -13,7 +13,7 @@ interface MobileOverlay {
     value: string;
     onChange: (e: FormEvent<HTMLInputElement>) => void;
   };
-  searchResults: SearchResultsProps;
+  searchResults: ResultsProps;
 }
 
 const MobileOverlay = ({

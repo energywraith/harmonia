@@ -15,7 +15,7 @@ const Results = ({ songs, artists, albums }: ResultsProps) => {
         {songs?.map((song) => (
           <ResultsItem
             key={song.id}
-            href={`songs/${song.id}`}
+            href={`/songs/${song.id}`}
             title={song.title}
             subtitle={song.primary_artist.name}
             image={song.header_image_url}
@@ -26,7 +26,7 @@ const Results = ({ songs, artists, albums }: ResultsProps) => {
         {artists?.map((artist) => (
           <ResultsItem
             key={artist.id}
-            href={`artists/${artist.id}`}
+            href={`/artists/${artist.id}`}
             title={artist.name}
             image={artist.image_url}
             isArtist
@@ -37,7 +37,7 @@ const Results = ({ songs, artists, albums }: ResultsProps) => {
         {albums?.map((album) => (
           <ResultsItem
             key={album.id}
-            href={`albums/${album.id}`}
+            href={`/albums/${album.id}`}
             title={album.name}
             subtitle={album.artist.name}
             image={album.cover_art_thumbnail_url}

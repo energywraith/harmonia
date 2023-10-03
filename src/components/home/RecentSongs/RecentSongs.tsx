@@ -8,7 +8,7 @@ interface RecentSongsProps {
 }
 
 const RecentSongs = ({ songs }: RecentSongsProps) => (
-  <Container outerClassName="overflow-hidden">
+  <Container outerClassName="overflow-hidden pb-8">
     <h2 className="text-3xl lg:text-5xl font-passion pb-8 pt-12 px-4 lg:px-0">
       Get back to those songs!
     </h2>

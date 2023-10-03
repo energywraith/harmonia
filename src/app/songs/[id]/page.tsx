@@ -1,11 +1,14 @@
 import { Song } from "@/types";
+import { Banner } from "@/components/songs";
 
 async function getData({ id }: { id: string }) {
   const song = await fetch(`https://genius.com/api/songs/${id}`);
 
   if (song.ok) {
     const songJSON = await song.json();
-    return songJSON.response.song as Song;
+    const songData: Song = songJSON.response.song;
+
+    return songData;
   }
 
   throw "Song doesnt exist";
@@ -16,9 +19,7 @@ export default async function Song({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <div className="text-5xl font-passion h-60 flex justify-center items-center">
-        {song.title}
-      </div>
+      <Banner song={song} />
     </>
   );
 }

@@ -3,6 +3,7 @@ import { Container } from "@/components/common";
 import { Song } from "@/types";
 import { BannerBackground } from "./BannerBackground";
 import { BannerMedia } from "./BannerMedia";
+import NextLink from "next/link";
 
 const Banner = ({ song }: { song: Song }) => {
   return (
@@ -22,9 +23,15 @@ const Banner = ({ song }: { song: Song }) => {
       </div>
       <h1 className="font-passion text-5xl mt-4">{song.title}</h1>
       {song.album && (
-        <h2 className="text-xs text-secondary-900/75">on {song.album.name}</h2>
+        <NextLink href={`/albums/${song.album.id}`}>
+          <h2 className="text-xs text-secondary-900/75">
+            on {song.album.name}
+          </h2>
+        </NextLink>
       )}
-      <h3 className="text-lg mt-4">{song.primary_artist.name}</h3>
+      <NextLink href={`/artists/${song.primary_artist.id}`}>
+        <h3 className="text-lg mt-4">{song.primary_artist.name}</h3>
+      </NextLink>
       <BannerMedia media={song.media} />
     </Container>
   );

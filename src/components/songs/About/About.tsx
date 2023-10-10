@@ -17,7 +17,6 @@ const About = ({ song }: AboutProps) => {
     >
       <h3 className="text-xl">About</h3>
       <h4 className="font-passion text-5xl">{song.title}</h4>
-
       <ReadMore className="whitespace-pre-line text-center max-w-2xl mt-4">
         {song.description_preview}
       </ReadMore>

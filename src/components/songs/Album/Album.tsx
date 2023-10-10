@@ -1,6 +1,7 @@
 import { Container } from "@/components/common";
 import { Song } from "@/types";
 import { AlbumTracks } from "./AlbumTracks";
+import NextLink from "next/link";
 
 interface AlbumProps {
   album: Song["album"];
@@ -18,7 +19,9 @@ const Album = ({ album, currentSongId, tracks }: AlbumProps) => {
     >
       <div className="flex flex-col">
         <h3 className="text-lg">More on</h3>
-        <h4 className="font-passion text-6xl lg:max-w-lg">{album.name}</h4>
+        <NextLink href={`/albums/${album.id}`}>
+          <h4 className="font-passion text-6xl lg:max-w-lg">{album.name}</h4>
+        </NextLink>
       </div>
       <div className="flex-1 flex flex-col mt-4 lg:mt-0">
         <AlbumTracks

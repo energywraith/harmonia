@@ -1,30 +1,8 @@
 import { DiscoverTunes, Banner, RecentSongs } from "@/components/home";
-import { getRandomNumberInRange } from "@/utils";
-import { Song } from "@/types";
-
-async function fetchRandomSongs() {
-  const songs: Song[] = [];
-  const amount = 3;
-
-  while (songs.length < amount) {
-    try {
-      const id = getRandomNumberInRange(0, 100000);
-      const song = await fetch(`https://genius.com/api/songs/${id}`);
-
-      if (song.ok) {
-        const songJSON = await song.json();
-        songs.push(songJSON.response.song);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  return songs;
-}
+import { getRandomSongs } from "./lib";
 
 async function getData() {
-  const songs = await fetchRandomSongs();
+  const songs = await getRandomSongs({ amount: 3 });
 
   return {
     songs,

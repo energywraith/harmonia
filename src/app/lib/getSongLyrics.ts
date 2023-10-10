@@ -17,6 +17,7 @@ export const getSongLyrics = async ({ url }: { url: string }) => {
         if ($(elem).text().length !== 0) {
           let element = $(elem);
 
+          // @ts-ignore
           let snippet = element
             .html()
             .replace(/<br>/g, "\n")

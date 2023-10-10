@@ -5,3 +5,6 @@ export * from "./SearchIcon";
 export * from "./FigmaIcon";
 export * from "./GithubIcon";
 export * from "./LoadingIcon";
+export * from "./SpotifyIcon";
+export * from "./SoundcloudIcon";
+export * from "./YoutubeIcon";

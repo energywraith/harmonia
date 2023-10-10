@@ -9,6 +9,10 @@ interface Song {
     id: string;
     name: string;
   };
+  media: {
+    provider: "spotify" | "youtube" | "soundcloud";
+    url: string;
+  }[];
 }
 
 export type { Song };

@@ -1,5 +1,5 @@
 import { Song } from "@/types";
-import { Banner } from "@/components/songs";
+import { About, Banner } from "@/components/songs";
 import { getSong, getAlbumTracks, getSongLyrics } from "@/app/lib";
 
 async function getData({ id }: { id: string }) {
@@ -23,6 +23,7 @@ export default async function Song({ params }: { params: { id: string } }) {
   return (
     <>
       <Banner song={song} />
+      <About song={song} />
     </>
   );
 }

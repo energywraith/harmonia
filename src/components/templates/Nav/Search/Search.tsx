@@ -42,7 +42,7 @@ const Search = ({
       >
         {showResultsBox && (
           <Wrapper innerRef={innerRef} onBlur={onBlur} isMobile={isMobile}>
-            <Results {...searchResults} />
+            <Results {...searchResults} onResultClick={onBlur} />
           </Wrapper>
         )}
       </div>

@@ -46,6 +46,11 @@ const Nav = () => {
     setSearchKey(e.currentTarget.value);
   };
 
+  const onCloseHamburger = () => {
+    setIsMenuOpen(false);
+    setIsSearchOpen(false);
+  };
+
   const fetchSearchResults = async () => {
     setIsLoading(true);
 
@@ -90,7 +95,7 @@ const Nav = () => {
               variant="secondary"
               Icon={isLoading ? Loader : SearchIcon}
               isSearchOpen={isSearchOpen}
-              onBlur={() => setIsSearchOpen(false)}
+              onBlur={onCloseHamburger}
               searchResults={searchResults}
               inputProps={{
                 ...searchInputProps,
@@ -112,6 +117,7 @@ const Nav = () => {
         isSearchOpen={isSearchOpen}
         searchInputProps={searchInputProps}
         searchResults={searchResults}
+        onCloseHamburger={onCloseHamburger}
       />
     </>
   );

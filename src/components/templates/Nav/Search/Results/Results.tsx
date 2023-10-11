@@ -6,9 +6,10 @@ interface ResultsProps {
   songs: Song[];
   artists: Artist[];
   albums: Album[];
+  onResultClick?: () => void;
 }
 
-const Results = ({ songs, artists, albums }: ResultsProps) => {
+const Results = ({ songs, artists, albums, onResultClick }: ResultsProps) => {
   return (
     <div className="flex flex-col gap-y-2 py-2">
       <ResultsList header="Songs">
@@ -19,6 +20,7 @@ const Results = ({ songs, artists, albums }: ResultsProps) => {
             title={song.title}
             subtitle={song.primary_artist.name}
             image={song.header_image_url}
+            onResultClick={onResultClick}
           />
         ))}
       </ResultsList>
@@ -29,6 +31,7 @@ const Results = ({ songs, artists, albums }: ResultsProps) => {
             href={`/artists/${artist.id}`}
             title={artist.name}
             image={artist.image_url}
+            onResultClick={onResultClick}
             isArtist
           />
         ))}
@@ -41,6 +44,7 @@ const Results = ({ songs, artists, albums }: ResultsProps) => {
             title={album.name}
             subtitle={album.artist.name}
             image={album.cover_art_thumbnail_url}
+            onResultClick={onResultClick}
           />
         ))}
       </ResultsList>

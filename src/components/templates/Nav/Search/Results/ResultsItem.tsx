@@ -7,6 +7,7 @@ interface ResultsItemProps {
   title: string;
   subtitle?: string;
   isArtist?: boolean;
+  onResultClick?: () => void;
 }
 
 const ResultsItem = ({
@@ -15,9 +16,10 @@ const ResultsItem = ({
   title,
   subtitle,
   isArtist,
+  onResultClick,
 }: ResultsItemProps) => {
   return (
-    <NextLink href={href}>
+    <NextLink href={href} onClick={onResultClick}>
       <li className="mx-2 py-2 flex border-t-2 border-primary-900/50 px-2 gap-x-2">
         <div
           className={`relative w-12 h-12 min-w-[3rem] min-h-[3rem] overflow-hidden${

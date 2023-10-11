@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, ReactNode } from "react";
+import { ReactNode } from "react";
 import NextLink, { LinkProps as NextLinkProps } from "next/link";
 import { usePathname } from "next/navigation";
 import { ConditionalWrapper } from "@/components/common/ConditionalWrapper";
@@ -15,7 +15,13 @@ const disabledStyles =
   "cursor-default text-primary-900/50 lg:text-secondary-900/50";
 const activeStyles = "group text-primary-900 lg:text-secondary-900";
 
-const NavLink = ({ href, disabled, children, ...props }: LinkProps) => {
+const NavLink = ({
+  href,
+  disabled,
+  children,
+  onClick,
+  ...props
+}: LinkProps) => {
   const pathname = usePathname();
 
   const isCurrentRoute = pathname === href;
@@ -23,7 +29,11 @@ const NavLink = ({ href, disabled, children, ...props }: LinkProps) => {
   return (
     <ConditionalWrapper
       condition={!disabled}
-      wrapper={(children) => <NextLink href={href}>{children}</NextLink>}
+      wrapper={(children) => (
+        <NextLink href={href} onClick={onClick}>
+          {children}
+        </NextLink>
+      )}
     >
       <li
         className={`font-passion  text-xl ${

@@ -13,6 +13,7 @@ interface MobileOverlay {
     value: string;
     onChange: (e: FormEvent<HTMLInputElement>) => void;
   };
+  onCloseHamburger: () => void;
   searchResults: ResultsProps;
 }
 
@@ -21,6 +22,7 @@ const MobileOverlay = ({
   isSearchOpen,
   searchInputProps,
   searchResults,
+  onCloseHamburger,
 }: MobileOverlay) => {
   const { isBelowLg } = useBreakpoint("lg");
 
@@ -60,6 +62,7 @@ const MobileOverlay = ({
                 href={route.href}
                 disabled={route.disabled}
                 className="px-4"
+                onClick={onCloseHamburger}
               >
                 <div className="border-b-2 border-primary-600 py-3">
                   {route.label}
@@ -81,6 +84,7 @@ const MobileOverlay = ({
           searchResults={searchResults}
           inputProps={searchInputProps}
           className="w-full px-4 py-4"
+          onBlur={onCloseHamburger}
           isMobile
         />
       )}

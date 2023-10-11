@@ -23,7 +23,11 @@ const NavMenu = ({ isMobileOverlayOpen, onHamburgerClick }: NavMenuProps) => {
       <nav className="hidden lg:flex flex-1 ml-4 py-4">
         <ul className="flex gap-x-6">
           {routes.map((route) => (
-            <NavLink key={route.label} href={route.href}>
+            <NavLink
+              key={route.label}
+              href={route.href}
+              disabled={route.disabled}
+            >
               {route.label}
             </NavLink>
           ))}

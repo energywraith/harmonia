@@ -55,7 +55,12 @@ const MobileOverlay = ({
         <nav className="w-full relative flex flex-col">
           <ul className="flex flex-col">
             {routes.map((route) => (
-              <NavLink key={route.label} href={route.href} className="px-4">
+              <NavLink
+                key={route.label}
+                href={route.href}
+                disabled={route.disabled}
+                className="px-4"
+              >
                 <div className="border-b-2 border-primary-600 py-3">
                   {route.label}
                 </div>

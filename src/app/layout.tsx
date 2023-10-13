@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Poppins, Passion_One, Lobster } from "next/font/google";
 import { Nav } from "@/components/templates/Nav";
 import { Footer } from "@/components/templates";
+import { Suspense } from "react";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -35,10 +36,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} ${passionOne.variable} ${lobster.variable} bg-primary-900 text-secondary-900 font-poppins`}
+        className={`${poppins.variable} ${passionOne.variable} ${lobster.variable} bg-primary-900 text-secondary-900 font-poppins min-h-screen flex flex-col`}
       >
         <Nav />
-        <main className="pt-16">{children}</main>
+        <Suspense>
+          <main className="pt-16 flex flex-col flex-1">{children}</main>
+        </Suspense>
         <Footer />
       </body>
     </html>

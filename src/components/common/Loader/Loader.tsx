@@ -1,6 +1,6 @@
 import { LoadingIcon } from "@/components/icons";
 
-const Loader = ({ className }: { className: string }) => {
+const Loader = ({ className }: { className?: string }) => {
   return (
     <div className={className}>
       <LoadingIcon className="animate-spin" />

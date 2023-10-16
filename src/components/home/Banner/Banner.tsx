@@ -27,4 +27,6 @@ const Banner = () => (
   </Container>
 );
 
+Banner.Skeleton = Banner;
+
 export { Banner };

@@ -1,11 +1,16 @@
 import Image from "next/image";
-import { Container } from "@/components/common";
+import NextLink from "next/link";
 import { Song } from "@/types";
+import { Container } from "@/components/common";
 import { BannerBackground } from "./BannerBackground";
 import { BannerMedia } from "./BannerMedia";
-import NextLink from "next/link";
+import { Skeleton as SkeletonComponent } from "@/components/common";
 
-const Banner = ({ song }: { song: Song }) => {
+interface BannerProps {
+  song: Song;
+}
+
+const Banner = ({ song }: BannerProps) => {
   return (
     <Container
       outerClassName="w-full relative shadow-sm shadow-primary-900 overflow-hidden"
@@ -36,5 +41,27 @@ const Banner = ({ song }: { song: Song }) => {
     </Container>
   );
 };
+
+const Skeleton = () => {
+  return (
+    <Container
+      outerClassName="w-full relative shadow-sm shadow-primary-900 overflow-hidden"
+      className="text-secondary-900 h-full py-8 flex flex-col justify-center items-center text-center px-4"
+    >
+      <BannerBackground.Skeleton />
+      <div className="relative w-48 h-48">
+        <SkeletonComponent className="w-full h-full" />
+      </div>
+      <h1 className="font-passion text-5xl mt-4 w-96">
+        <SkeletonComponent variant="text" />
+      </h1>
+      <h3 className="text-lg mt-8 mb-8 w-48">
+        <SkeletonComponent variant="text" />
+      </h3>
+    </Container>
+  );
+};
+
+Banner.Skeleton = Skeleton;
 
 export { Banner };

@@ -7,7 +7,7 @@ interface RecentSongsCarousel {
 
 const RecentSongsCarousel = ({ children }: RecentSongsCarousel) => (
   <Carousel
-    className="mx-0 max-w-none"
+    className="mx-0 max-w-none recent-songs-carousel"
     slidesPerView="auto"
     spaceBetween={20}
     breakpoints={{
@@ -22,5 +22,11 @@ const RecentSongsCarousel = ({ children }: RecentSongsCarousel) => (
     {children}
   </Carousel>
 );
+
+const Skeleton = ({ children }: RecentSongsCarousel) => (
+  <div className="flex w-full gap-x-5">{children}</div>
+);
+
+RecentSongsCarousel.Skeleton = Skeleton;
 
 export { RecentSongsCarousel };

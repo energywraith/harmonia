@@ -2,6 +2,7 @@ import { Container } from "@/components/common";
 import { Card } from "@/components/templates";
 import { Song } from "@/types";
 import { RecentSongsCarousel } from "./RecentSongsCarousel";
+import { RecentSongsHeaders } from "./RecentSongsHeaders";
 
 interface RecentSongsProps {
   songs: Song[];
@@ -9,9 +10,7 @@ interface RecentSongsProps {
 
 const RecentSongs = ({ songs }: RecentSongsProps) => (
   <Container outerClassName="overflow-hidden pb-8">
-    <h2 className="text-3xl lg:text-5xl font-passion pb-8 pt-12 px-4 lg:px-0">
-      Get back to those songs!
-    </h2>
+    <RecentSongsHeaders />
     <RecentSongsCarousel>
       {songs.map((song) => (
         <Card
@@ -20,12 +19,29 @@ const RecentSongs = ({ songs }: RecentSongsProps) => (
           title={song.title}
           subtitle={song.primary_artist.name}
           image={song.header_image_url}
-          className="select-none w-fit mb-10 mx-4 lg:mx-0"
+          className="select-none mb-10 mx-4 lg:mx-0"
           narrow
         />
       ))}
     </RecentSongsCarousel>
   </Container>
 );
+
+const Skeleton = () => (
+  <Container outerClassName="overflow-hidden pb-8">
+    <RecentSongsHeaders />
+    <RecentSongsCarousel.Skeleton>
+      {Array.from(Array(3)).map((_, index) => (
+        <Card.Skeleton
+          key={index}
+          className="select-none mb-10 mx-4 lg:mx-0"
+          narrow
+        />
+      ))}
+    </RecentSongsCarousel.Skeleton>
+  </Container>
+);
+
+RecentSongs.Skeleton = Skeleton;
 
 export { RecentSongs };

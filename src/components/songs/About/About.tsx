@@ -1,5 +1,6 @@
 import { Song } from "@/types";
 import { Container, ReadMore } from "@/components/common";
+import { Skeleton as SkeletonComponent } from "@/components/common";
 
 interface AboutProps {
   song: Song;
@@ -24,5 +25,21 @@ const About = ({ song }: AboutProps) => {
     </Container>
   );
 };
+
+const Skeleton = () => (
+  <Container
+    outerClassName="bg-secondary-900 text-primary-900"
+    className="flex flex-col items-center py-8 px-4 text-center"
+  >
+    <h4 className="font-passion text-5xl w-48">
+      <SkeletonComponent variant="text" />
+    </h4>
+    <div className="w-80 mt-4">
+      <SkeletonComponent variant="text" />
+    </div>
+  </Container>
+);
+
+About.Skeleton = Skeleton;
 
 export { About };

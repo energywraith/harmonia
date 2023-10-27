@@ -1,6 +1,7 @@
 import { Container, ReadMore } from "@/components/common";
 import { Song } from "@/types";
 import { YoutubeEmbed } from "./YoutubeEmbed";
+import { Skeleton as SkeletonComponent } from "@/components/common";
 
 interface LyricsProps {
   song: Song;
@@ -18,5 +19,17 @@ const Lyrics = ({ song, lyrics }: LyricsProps) => (
     <YoutubeEmbed url={song.youtube_url} />
   </Container>
 );
+
+const Skeleton = () => (
+  <Container className="py-8 flex flex-col gap-8 px-4">
+    {[4, 3, 2].map((value) => (
+      <span className={`w-${value}/12`} key={value}>
+        <SkeletonComponent variant="text" className="bg-secondary-900" />
+      </span>
+    ))}
+  </Container>
+);
+
+Lyrics.Skeleton = Skeleton;
 
 export { Lyrics };

@@ -11,7 +11,12 @@ export const getRandomSongs = async ({ amount }: { amount: number }) => {
 
       if (song.ok) {
         const songJSON = await song.json();
-        songs.push(songJSON.response.song);
+
+        const songData = songJSON.response.song;
+
+        if (songData.is_music) {
+          songs.push(songJSON.response.song);
+        }
       }
     } catch (error) {
       console.log(error);

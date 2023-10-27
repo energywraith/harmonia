@@ -1,6 +1,6 @@
 import { Banner, DiscoverTunes, RecentSongs } from "@/components/home";
 
-export default function Loading() {
+export const Loading = () => {
   return (
     <>
       <Banner.Skeleton />
@@ -8,4 +8,4 @@ export default function Loading() {
       <RecentSongs.Skeleton />
     </>
   );
-}
+};

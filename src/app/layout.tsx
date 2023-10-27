@@ -5,6 +5,8 @@ import { Nav } from "@/components/templates/Nav";
 import { Footer } from "@/components/templates";
 import { Suspense } from "react";
 
+import { Loading } from "./Loading";
+
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400"],
@@ -39,7 +41,7 @@ export default function RootLayout({
         className={`${poppins.variable} ${passionOne.variable} ${lobster.variable} bg-primary-900 text-secondary-900 font-poppins min-h-screen flex flex-col`}
       >
         <Nav />
-        <Suspense>
+        <Suspense fallback={<Loading />}>
           <main className="pt-16 flex flex-col flex-1">{children}</main>
         </Suspense>
         <Footer />

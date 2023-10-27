@@ -9,10 +9,9 @@ const RecentSongsCarousel = ({ children }: RecentSongsCarousel) => (
   <Carousel
     className="mx-0 max-w-none recent-songs-carousel"
     slidesPerView="auto"
-    spaceBetween={20}
     breakpoints={{
       0: {
-        spaceBetween: 0,
+        spaceBetween: 24,
       },
       1024: {
         spaceBetween: 40,

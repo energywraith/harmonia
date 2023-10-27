@@ -7,7 +7,7 @@
   margin: 0;
 }
 
-.recent-songs-carousel .swiper, .recent-songs-carousel .swiper-wrapper {
+.recent-songs-carousel.swiper, .recent-songs-carousel .swiper-wrapper {
   overflow: visible;
 }
 

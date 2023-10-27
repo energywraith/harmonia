@@ -25,7 +25,7 @@ const ReadMore = ({
     collapsedLength
   );
 
-  const isLongEnough = endOfSentence > collapsedLength;
+  const isLongEnough = children.length > endOfSentence;
 
   return (
     <p className={className}>

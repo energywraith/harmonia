@@ -6,9 +6,10 @@ interface AboutProps {
 }
 
 const About = ({ song }: AboutProps) => {
-  if (song.description_preview.length === 0) {
-    return null;
-  }
+  const description =
+    song.description_preview.length > 0
+      ? song.description_preview
+      : "There is no description about this song yet 😓.";
 
   return (
     <Container
@@ -18,7 +19,7 @@ const About = ({ song }: AboutProps) => {
       <h3 className="text-xl">About</h3>
       <h4 className="font-passion text-5xl">{song.title}</h4>
       <ReadMore className="whitespace-pre-line text-center max-w-2xl mt-4">
-        {song.description_preview}
+        {description}
       </ReadMore>
     </Container>
   );

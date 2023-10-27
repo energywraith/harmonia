@@ -25,12 +25,17 @@ const ReadMore = ({
     collapsedLength
   );
 
+  const isLongEnough = endOfSentence > collapsedLength;
+
   return (
     <p className={className}>
       {isCollapsed ? children.slice(0, endOfSentence) : children}
-      <button onClick={toggleCollapsed} className="font-bold ml-1">
-        {isCollapsed ? "Show more..." : "Show less..."}
-      </button>
+
+      {isLongEnough && (
+        <button onClick={toggleCollapsed} className="font-bold ml-1">
+          {isCollapsed ? "Show more..." : "Show less..."}
+        </button>
+      )}
     </p>
   );
 };
